@@ -1,3 +1,9 @@
+export interface IResponse {
+  author: string;
+  content: string;
+  published_at: string;
+}
+
 export interface IReview {
   id: string;
   author: string;
@@ -5,6 +11,7 @@ export interface IReview {
   published_at: string;
   rating: number;
   content: string;
+  response: IResponse | null | undefined;
 }
 
 export type IReviewArray = Array<IReview>;

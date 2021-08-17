@@ -1,10 +1,12 @@
 import { Box } from "@chakra-ui/react";
+import { useRouteMatch } from "react-router-dom";
 import { StarIcon } from "@chakra-ui/icons";
 import { IReviewItemProps } from "../types";
 import { jonquil, manatee, white, bedrock } from "../styles/palette";
 import Text from "./Text";
+import { ListLinks } from "./ReviewLinks";
 
-export const formatDate = (date: string): string => {
+const formatDate = (date: string): string => {
   const dateObj = new Date(date);
   const month = dateObj.getMonth() + 1;
   const day = dateObj.getDate();
@@ -13,6 +15,10 @@ export const formatDate = (date: string): string => {
 };
 
 const ReviewItem = ({ data }: IReviewItemProps): JSX.Element => {
+  const {
+    params: { reviewId },
+  } = useRouteMatch<any>();
+
   return (
     <Box mt="20" mb="20" backgroundColor={white} d="flex" flexDirection="column">
       <Box ml="10" mr="10">
@@ -30,15 +36,17 @@ const ReviewItem = ({ data }: IReviewItemProps): JSX.Element => {
           <Text
             fontSize="14px"
             data={
-              data.content.length < 51
+              reviewId
                 ? data.content
-                : `${data.content.substring(0, 50)}...`
+                : data.content.length < 76
+                ? data.content
+                : `${data.content.substring(0, 75)}...`
             }
             color={bedrock}
             mt="20px"
           />
         </Box>
-        <Box mt="50" mb="15" d="flex">
+        <Box mt="50" mb="15" d="flex" justifyContent="space-between">
           <Text fontSize="12px" data={data.author} />
           <Text
             fontSize="12px"
@@ -46,6 +54,7 @@ const ReviewItem = ({ data }: IReviewItemProps): JSX.Element => {
             data={formatDate(data.published_at)}
             color={bedrock}
           />
+          {!reviewId && <ListLinks data={data} />}
         </Box>
       </Box>
     </Box>
