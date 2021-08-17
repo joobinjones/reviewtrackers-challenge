@@ -1,0 +1,13 @@
+@import url("./palette.css");
+
+header {
+  height: 100px;
+  width: 100%;
+  background-color: var(--sapphire);
+  display: flex;
+  align-items: center;
+  h1 {
+    margin-left: 5%;
+    color: var(--white);
+  }
+}
