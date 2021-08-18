@@ -19,7 +19,7 @@ const ResponseLink = ({ reviewId, Icon }: IResponseLinkProps): JSX.Element => {
 };
 
 export const ListLinks = ({ data }: IReviewItemProps): JSX.Element => {
-  return data.response ? (
+  return data.reply ? (
     <ResponseLink reviewId={data.id} Icon={SiGooglemessages} />
   ) : (
     <ResponseLink reviewId={data.id} Icon={FaReply} />

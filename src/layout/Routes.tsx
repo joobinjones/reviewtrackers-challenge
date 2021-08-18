@@ -18,7 +18,9 @@ const Routes = (): JSX.Element => {
         console.log(err);
       }
     };
-    getData();
+    // need to figure out refresh
+
+    if (!state.data?.length) getData();
   }, []);
   const context: IContext = { state, setState };
 

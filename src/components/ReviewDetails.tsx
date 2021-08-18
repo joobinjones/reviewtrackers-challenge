@@ -18,7 +18,7 @@ const ReviewDetails = (): JSX.Element => {
     published_at: "",
     rating: 0,
     content: "",
-    response: null,
+    reply: null,
   });
   useEffect(() => {
     const foundReview = context.state.data?.find((ele) => ele.id === reviewId);

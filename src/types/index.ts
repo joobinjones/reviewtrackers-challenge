@@ -1,4 +1,4 @@
-export interface IResponse {
+export interface IReply {
   author: string;
   content: string;
   published_at: string;
@@ -11,7 +11,7 @@ export interface IReview {
   published_at: string;
   rating: number;
   content: string;
-  response: IResponse | null | undefined;
+  reply: IReply | null | undefined;
 }
 
 export type IReviewArray = Array<IReview>;

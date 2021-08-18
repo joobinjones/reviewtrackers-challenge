@@ -51,6 +51,7 @@
     "@chakra-ui/layout": "^1.4.8",
     "@types/react-router-dom": "^5.1.8",
     "axios": "^0.21.1",
+    "formik": "^2.2.9",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0"
   }
