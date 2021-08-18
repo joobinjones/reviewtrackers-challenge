@@ -8,11 +8,11 @@ import Context from "../context";
 import { IState, IContext } from "../types";
 
 const Routes = (): JSX.Element => {
-  const [state, setState] = useState<IState>({ data: [] });
+  const [state, setState] = useState<IState>({ data: [], user: "Jane Appleseed" });
   useEffect(() => {
     const getData = async () => {
       try {
-        const response: AxiosResponse = await axios.get("reviews.json");
+        const response: AxiosResponse = await axios.get("/reviews.json");
         setState(() => ({ ...state, data: response.data }));
       } catch (err) {
         console.log(err);

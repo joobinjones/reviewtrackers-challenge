@@ -5,12 +5,14 @@ import ReviewItem from "./ReviewItem";
 import Context from "../context";
 import { useContext, useState, useEffect } from "react";
 import { IReview, IContext } from "../types";
+import AddEditReply from "./AddEditReply";
+import ReplyCard from "./ReplyCard";
 
 const ReviewDetails = (): JSX.Element => {
   const {
     params: { reviewId },
   } = useRouteMatch<any>();
-  const context: IContext = useContext(Context);
+  const { state, setState }: IContext = useContext(Context);
   const [review, setReview] = useState<IReview>({
     id: "",
     author: "",
@@ -20,13 +22,23 @@ const ReviewDetails = (): JSX.Element => {
     content: "",
     reply: null,
   });
+  const [editClicked, setEditClicked] = useState<boolean>(false);
   useEffect(() => {
-    const foundReview = context.state.data?.find((ele) => ele.id === reviewId);
+    const foundReview = state.data?.find((ele) => ele.id === reviewId);
     setReview(() => ({ ...review, ...foundReview }));
-  }, []);
+  }, [state, setState]);
   return (
     <Box>
       <ReviewItem data={review} />
+      {review.reply ? (
+        <ReplyCard
+          data={review}
+          editClicked={editClicked}
+          setEditClicked={setEditClicked}
+        />
+      ) : (
+        <AddEditReply data={review} />
+      )}
     </Box>
   );
 };

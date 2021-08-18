@@ -18,6 +18,7 @@ export type IReviewArray = Array<IReview>;
 
 export interface IState {
   data: IReviewArray | null;
+  user: string;
 }
 
 export interface IContext {

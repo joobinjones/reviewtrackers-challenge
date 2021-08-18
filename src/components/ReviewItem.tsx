@@ -1,19 +1,13 @@
-import { Box } from "@chakra-ui/react";
-import { useRouteMatch } from "react-router-dom";
+import { Box, Button } from "@chakra-ui/react";
+import { useRouteMatch, Link } from "react-router-dom";
 import { StarIcon } from "@chakra-ui/icons";
+import { FaReply } from "react-icons/fa";
 import { IReviewItemProps } from "../types";
 import { jonquil, manatee, white, bedrock } from "../styles/palette";
 import Text from "./Text";
 import { ListLinks } from "./ReviewLinks";
-import AddEditResponse from "./AddEditResponse";
-
-const formatDate = (date: string): string => {
-  const dateObj = new Date(date);
-  const month = dateObj.getMonth() + 1;
-  const day = dateObj.getDate();
-  const year = dateObj.getFullYear();
-  return `${month < 10 ? `0${month}` : month}/${day < 10 ? `0${day}` : day}/${year}`;
-};
+import { formatDate } from "../util";
+import { sapphire, black } from "../styles/palette";
 
 const ReviewItem = ({ data }: IReviewItemProps): JSX.Element => {
   const {
@@ -49,18 +43,37 @@ const ReviewItem = ({ data }: IReviewItemProps): JSX.Element => {
             />
           </Box>
           <Box mt="50" mb="15" d="flex" justifyContent="space-between">
+            {reviewId && (
+              <Link to="/">
+                <Button
+                  type="submit"
+                  style={{
+                    backgroundColor: sapphire,
+                    color: white,
+                    // marginTop: "5px",
+                    // marginRight: "10px",
+                    // marginBottom: "5px",
+                    border: `1px solid ${black}`,
+                    borderRadius: "5px",
+                    width: "100px",
+                  }}
+                >
+                  <FaReply /> <span style={{ marginLeft: "5px" }}>Back to List</span>
+                </Button>
+              </Link>
+            )}
             <Text fontSize="12px" data={data.author} />
             <Text
               fontSize="12px"
               ml="15px"
-              data={formatDate(data.published_at)}
+              data={formatDate(new Date(data.published_at))}
               color={bedrock}
             />
             {!reviewId && <ListLinks data={data} />}
           </Box>
         </Box>
       </Box>
-      {reviewId && <AddEditResponse data={data} />}
+      {/* {reviewId && <AddEditResponse data={data} />} */}
     </>
   );
 };
