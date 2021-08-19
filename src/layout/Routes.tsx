@@ -1,25 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios, { AxiosResponse } from "axios";
 import ListReviews from "../components/ListReviews";
 import ReviewDetails from "../components/ReviewDetails";
 import Context from "../context";
 import { IState, IContext } from "../types";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../api";
 
 const Routes = (): JSX.Element => {
   const [state, setState] = useState<IState>({ data: [], user: "Jane Appleseed" });
   useEffect(() => {
     const getData = async () => {
       try {
-        const response: AxiosResponse = await axios.get("/reviews.json");
-        setState(() => ({ ...state, data: response.data }));
+        const reviewsRef = doc(db, "reviews", "reviews");
+        const response = await getDoc(reviewsRef);
+        setState(() => ({ ...state, data: response.data()?.reviews }));
       } catch (err) {
         console.log(err);
       }
     };
-    // need to figure out refresh
-
     if (!state.data?.length) getData();
   }, []);
   const context: IContext = { state, setState };
