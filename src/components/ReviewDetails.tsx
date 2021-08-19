@@ -27,18 +27,43 @@ const ReviewDetails = (): JSX.Element => {
     const foundReview = state.data?.find((ele) => ele.id === reviewId);
     setReview(() => ({ ...review, ...foundReview }));
   }, [state, setState]);
+
+  const Form = () => (
+    <AddEditReply
+      review={review}
+      setReview={setReview}
+      editClicked={editClicked}
+      setEditClicked={setEditClicked}
+    />
+  );
+  const Card = () => (
+    <ReplyCard
+      review={review}
+      editClicked={editClicked}
+      setEditClicked={setEditClicked}
+    />
+  );
+
+  let RenderReply;
+  switch (true) {
+    case review.reply && editClicked: {
+      RenderReply = Form();
+      break;
+    }
+    case review.reply && !editClicked: {
+      RenderReply = Card();
+      break;
+    }
+    case !review.reply: {
+      RenderReply = Form();
+      break;
+    }
+  }
+
   return (
     <Box>
-      <ReviewItem data={review} />
-      {review.reply ? (
-        <ReplyCard
-          data={review}
-          editClicked={editClicked}
-          setEditClicked={setEditClicked}
-        />
-      ) : (
-        <AddEditReply data={review} />
-      )}
+      <ReviewItem review={review} />
+      {RenderReply}
     </Box>
   );
 };

@@ -1,4 +1,5 @@
 import { black } from "../styles/palette";
+
 const Text = ({
   fontSize = "12px",
   fontWeight = 400,

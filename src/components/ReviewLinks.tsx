@@ -18,10 +18,10 @@ const ResponseLink = ({ reviewId, Icon }: IResponseLinkProps): JSX.Element => {
   );
 };
 
-export const ListLinks = ({ data }: IReviewItemProps): JSX.Element => {
-  return data.reply ? (
-    <ResponseLink reviewId={data.id} Icon={SiGooglemessages} />
+export const ListLinks = ({ review }: IReviewItemProps): JSX.Element => {
+  return review.reply ? (
+    <ResponseLink reviewId={review.id} Icon={SiGooglemessages} />
   ) : (
-    <ResponseLink reviewId={data.id} Icon={FaReply} />
+    <ResponseLink reviewId={review.id} Icon={FaReply} />
   );
 };

@@ -27,7 +27,7 @@ export interface IContext {
 }
 
 export interface IReviewItemProps {
-  data: IReview;
+  review: IReview;
 }
 
 // export interface ITextProps {

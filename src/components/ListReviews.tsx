@@ -9,7 +9,7 @@ const ListReviews = (): JSX.Element => {
     <div>
       {context.state.data?.map((ele: IReview, idx: number) => (
         <div className="review-item" key={idx}>
-          <ReviewItem data={ele} />
+          <ReviewItem review={ele} />
         </div>
       ))}
     </div>
