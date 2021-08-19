@@ -1,4 +1,4 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, useMediaQuery } from "@chakra-ui/react";
 import { useRouteMatch, Link } from "react-router-dom";
 import { StarIcon } from "@chakra-ui/icons";
 import { FaReply } from "react-icons/fa";
@@ -13,9 +13,19 @@ const ReviewItem = ({ review }: IReviewItemProps): JSX.Element => {
   const {
     params: { reviewId },
   } = useRouteMatch<any>();
-
+  const [isLargerThan600] = useMediaQuery("(min-width: 600px");
   return (
-    <Box mt="20" mb="20" backgroundColor={white} d="flex" flexDirection="column">
+    <Box
+      maxWidth={isLargerThan600 ? "600px" : ""}
+      width="100%"
+      mt="20"
+      mb="20"
+      backgroundColor={white}
+      d="flex"
+      flexDirection="column"
+      marginLeft={reviewId ? "auto" : ""}
+      marginRight={reviewId ? "auto" : ""}
+    >
       <Box ml="10" mr="10">
         <Box mt="15">
           <Text fontSize="20px" data={review.place} fontWeight={800} />

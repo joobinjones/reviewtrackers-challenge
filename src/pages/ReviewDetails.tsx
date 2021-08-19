@@ -29,7 +29,7 @@ const ReviewDetails = (): JSX.Element => {
   }, [state, setState]);
 
   return (
-    <Box>
+    <Box width="100%" margin="auto">
       <ReviewItem review={review} />
       {review.reply && !isEditing ? (
         <ReplyCard

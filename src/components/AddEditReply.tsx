@@ -42,7 +42,15 @@ const AddEditReply = ({
   };
 
   return (
-    <Box mt="20" mb="20" backgroundColor={white} d="flex" flexDirection="column">
+    <Box
+      mt="20"
+      mb="20"
+      backgroundColor={white}
+      d="flex"
+      flexDirection="column"
+      width="100%"
+      margin="auto"
+    >
       <Box mt="10" ml="10">
         <Formik
           initialValues={{ reply: review.reply ? review.reply.content : "" }}

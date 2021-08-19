@@ -1,5 +1,5 @@
 import { IReview } from "../types";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, useMediaQuery } from "@chakra-ui/react";
 import { white, sapphire, black, bedrock } from "../styles/palette";
 import Text from "./Text";
 
@@ -14,9 +14,16 @@ const ReplyCard = ({
   isEditing,
   setIsEditing,
 }: IReplyCardProps): JSX.Element => {
-  console.log(isEditing);
+  const [isLargerThan800] = useMediaQuery("(min-width: 800px");
   return (
-    <Box d="flex" flexDirection="column" backgroundColor={white}>
+    <Box
+      d="flex"
+      width="100%"
+      flexDirection="column"
+      backgroundColor={white}
+      maxWidth="600px"
+      margin="auto"
+    >
       <Text
         mt="25px"
         ml="10px"
