@@ -9,6 +9,10 @@
 - open one terminal in the directory and run <code>yarn start</code>. Leave the server running.
 - open another terminal in the directory and run <code>yarn test</code>
 
+## Side note regarding the username in the app
+
+I am Jane Appleseed. You are Jane Appleseed. We are all Jane Appleseed.
+
 # What I could have done better
 
 ## Tests
