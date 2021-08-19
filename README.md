@@ -38,6 +38,10 @@ I don't think I generalized some things enough. For instance, the ReviewItem com
 
 I used a combination of context and prop passing in this challenge. While this is generally what I am most comfortable with in personal projects, I think I could have delegated a few more things to the context store. For instance, the reviewId of a review that is being viewed in detail or replied to is a very important piece of data in this application. Maybe creating a key in the context store for the current active reviewId would be a better practice in a larger application.
 
+## DOCUMENTATION!
+
+I did not have the chance to document my code to the level I like to. Generally, at a minimum, I will document what a function takes in, what it returns, and why.
+
 # What I am proud of about this challenge
 
 - I used TypeScript to the best of my ability.
