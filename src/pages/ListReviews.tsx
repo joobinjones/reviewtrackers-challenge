@@ -1,7 +1,7 @@
 import Context from "../context";
 import { useContext } from "react";
 import { IContext, IReview } from "../types";
-import ReviewItem from "./ReviewItem";
+import ReviewItem from "../components/ReviewItem";
 
 const ListReviews = (): JSX.Element => {
   const context: IContext = useContext(Context);

@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRouteMatch } from "react-router-dom";
 import { Box } from "@chakra-ui/layout";
-import ReviewItem from "./ReviewItem";
+import ReviewItem from "../components/ReviewItem";
 import Context from "../context";
 import { useContext, useState, useEffect } from "react";
 import { IReview, IContext } from "../types";
-import AddEditReply from "./AddEditReply";
-import ReplyCard from "./ReplyCard";
+import AddEditReply from "../components/AddEditReply";
+import ReplyCard from "../components/ReplyCard";
 
 const ReviewDetails = (): JSX.Element => {
   const {
@@ -22,48 +22,29 @@ const ReviewDetails = (): JSX.Element => {
     content: "",
     reply: null,
   });
-  const [editClicked, setEditClicked] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   useEffect(() => {
     const foundReview = state.data?.find((ele) => ele.id === reviewId);
     setReview(() => ({ ...review, ...foundReview }));
   }, [state, setState]);
 
-  const Form = () => (
-    <AddEditReply
-      review={review}
-      setReview={setReview}
-      editClicked={editClicked}
-      setEditClicked={setEditClicked}
-    />
-  );
-  const Card = () => (
-    <ReplyCard
-      review={review}
-      editClicked={editClicked}
-      setEditClicked={setEditClicked}
-    />
-  );
-
-  let RenderReply;
-  switch (true) {
-    case review.reply && editClicked: {
-      RenderReply = Form();
-      break;
-    }
-    case review.reply && !editClicked: {
-      RenderReply = Card();
-      break;
-    }
-    case !review.reply: {
-      RenderReply = Form();
-      break;
-    }
-  }
-
   return (
     <Box>
       <ReviewItem review={review} />
-      {RenderReply}
+      {review.reply && !isEditing ? (
+        <ReplyCard
+          review={review}
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+        />
+      ) : (
+        <AddEditReply
+          review={review}
+          setReview={setReview}
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+        />
+      )}
     </Box>
   );
 };

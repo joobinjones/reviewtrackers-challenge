@@ -6,19 +6,20 @@ import Text from "./Text";
 import Context from "../context";
 import { useContext } from "react";
 import { formatDate } from "../util";
-import axios from "axios";
+import { updateDoc } from "firebase/firestore";
+import { reviewsRef } from "../api";
 interface IAddEditReplyProps {
   review: IReview;
   setReview: Function;
-  editClicked: boolean;
-  setEditClicked: Function;
+  isEditing: boolean;
+  setIsEditing: Function;
 }
 
 const AddEditReply = ({
   review,
   setReview,
-  editClicked,
-  setEditClicked,
+  isEditing,
+  setIsEditing,
 }: IAddEditReplyProps): JSX.Element => {
   const { state, setState }: IContext = useContext(Context);
 
@@ -33,13 +34,13 @@ const AddEditReply = ({
         content: values.reply,
         published_at: formatDate(new Date()),
       };
-    axios.put("/reviews.json", reviewsArr);
+    updateDoc(reviewsRef, { reviews: reviewsArr });
     setState(() => ({
       ...state,
       data: reviewsArr,
     }));
     setReview(() => foundReview);
-    setEditClicked(() => false);
+    setIsEditing(() => false);
   };
 
   return (
@@ -87,7 +88,7 @@ const AddEditReply = ({
               </Button>
               {review.reply && (
                 <Button
-                  onClick={() => setEditClicked(() => false)}
+                  onClick={() => setIsEditing(() => false)}
                   backgroundColor={bedrock}
                   color={white}
                   border={`1px solid ${bedrock}`}

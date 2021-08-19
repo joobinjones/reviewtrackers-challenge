@@ -5,16 +5,16 @@ import Text from "./Text";
 
 interface IReplyCardProps {
   review: IReview;
-  editClicked: boolean;
-  setEditClicked: Function;
+  isEditing: boolean;
+  setIsEditing: Function;
 }
 
 const ReplyCard = ({
   review,
-  editClicked,
-  setEditClicked,
+  isEditing,
+  setIsEditing,
 }: IReplyCardProps): JSX.Element => {
-  console.log(editClicked);
+  console.log(isEditing);
   return (
     <Box d="flex" flexDirection="column" backgroundColor={white}>
       <Text
@@ -41,7 +41,7 @@ const ReplyCard = ({
           border={`1px ${sapphire} ${black}`}
           borderRadius="5px"
           width="100px"
-          onClick={() => setEditClicked(() => true)}
+          onClick={() => setIsEditing(() => true)}
         >
           Edit Reply
         </Button>

@@ -17,7 +17,7 @@ export const firebaseConfig = {
 export const firebaseApp = initializeApp(firebaseConfig);
 export const db = getFirestore();
 
+export const reviewsRef = doc(db, "reviews", "reviews");
 export const updateReviews = async () => {
-  const reviewsRef = doc(db, "reviews", "reviews");
   await updateDoc(reviewsRef, { reviews });
 };
