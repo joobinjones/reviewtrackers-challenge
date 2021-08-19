@@ -45,7 +45,8 @@ const ReviewItem = ({ review }: IReviewItemProps): JSX.Element => {
           {reviewId && (
             <Link to="/">
               <Button
-                type="submit"
+                type="button"
+                testId="editReply"
                 backgroundColor={sapphire}
                 color={white}
                 border={`1px solid ${sapphire}`}

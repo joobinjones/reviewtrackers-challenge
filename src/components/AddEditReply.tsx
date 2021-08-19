@@ -11,14 +11,12 @@ import { reviewsRef } from "../api";
 interface IAddEditReplyProps {
   review: IReview;
   setReview: Function;
-  isEditing: boolean;
   setIsEditing: Function;
 }
 
 const AddEditReply = ({
   review,
   setReview,
-  isEditing,
   setIsEditing,
 }: IAddEditReplyProps): JSX.Element => {
   const { state, setState }: IContext = useContext(Context);
@@ -95,6 +93,7 @@ const AddEditReply = ({
                   borderRadius="5px"
                   width="75px"
                   ml="5"
+                  type="button"
                 >
                   Cancel
                 </Button>

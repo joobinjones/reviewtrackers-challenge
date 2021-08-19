@@ -7,7 +7,6 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@testing-library/dom": "^8.1.0",
-    "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
@@ -22,10 +21,16 @@
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
+  "jest": {
+    "watchPathIgnorePatterns": [
+      "/src/__tests__/jest.config.js",
+      "/src/__tests__/boilerplate.js"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --verbose --config ./src/__tests__/jest.config.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -51,9 +56,13 @@
     "@chakra-ui/layout": "^1.4.8",
     "@types/react-router-dom": "^5.1.8",
     "axios": "^0.21.1",
+    "faker": "^5.5.3",
     "firebase": "^9.0.0-beta.7",
     "firestore-export-import": "^0.16.0",
     "formik": "^2.2.9",
+    "jest": "26.6.0",
+    "jest-puppeteer": "^5.0.4",
+    "puppeteer": "^10.2.0",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0"
   }

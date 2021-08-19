@@ -41,7 +41,6 @@ const ReviewDetails = (): JSX.Element => {
         <AddEditReply
           review={review}
           setReview={setReview}
-          isEditing={isEditing}
           setIsEditing={setIsEditing}
         />
       )}
