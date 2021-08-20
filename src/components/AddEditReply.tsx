@@ -49,6 +49,7 @@ const AddEditReply = ({
       d="flex"
       flexDirection="column"
       width="100%"
+      maxWidth="600px"
       margin="auto"
     >
       <Box mt="10" ml="10">
